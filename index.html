@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  <title>Tech Blog Platform — Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+   
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <h1>TechBlog — demo</h1>
+        <div class="muted">Multi-user markdown editor • Local demo (no backend)</div>
+      </div>
+      <div class="controls">
+        <button class="ghost" id="new-user-btn">+ New User</button>
+        <select id="user-sel" class="ghost"></select>
+        <button class="btn" id="new-post">New Post</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="canvas">
+        <div id="editor-area"></div>
+
+        <section style="margin-top:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h2 style="margin:0">All Posts</h2>
+            <input id="search" class="search" placeholder="Search posts, tags or authors..." />
+          </div>
+          <div id="posts" style="margin-top:12px"></div>
+        </section>
+      </section>
+
+      <aside class="sidebar">
+        <h3 style="margin-top:0">Active user</h3>
+        <div class="row">
+          <div id="active-user" class="row"></div>
+        </div>
+
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:14px 0">
+        <h4>Users</h4>
+        <div id="users" class="user-list"></div>
+
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:14px 0">
+        <h4>Tags</h4>
+        <div id="all-tags" class="tags"></div>
+
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:14px 0">
+        <h4>Quick Tips</h4>
+        <ul class="muted" style="padding-left:18px">
+          <li>Write in Markdown — live preview on the right</li>
+          <li>Switch users to simulate multi-author flow</li>
+          <li>Everything stored locally (localStorage)</li>
+        </ul>
+
+        <footer>Made with ❤️ — demo only</footer>
+      </aside>
+    </main>
+  </div>
+
+  <template id="editor-template">
+    <div class="editor">
+      <div class="meta row">
+        <input id="title" class="input" placeholder="Post title — keep it snappy" />
+        <input id="post-tags" class="input" placeholder="tags: comma, separated" style="width:220px" />
+      </div>
+      <textarea id="excerpt" placeholder="Short excerpt" class="input"></textarea>
+      <div class="pane">
+        <div>
+          <label>Write (Markdown)</label>
+          <textarea id="content" class="input" style="height:300px" placeholder="# Hello\nWrite your markdown here..."></textarea>
+        </div>
+        <div>
+          <label>Preview</label>
+          <div id="preview" class="render" style="padding:8px;min-height:260px"></div>
+        </div>
+      </div>
+      <div class="row" style="justify-content:space-between">
+        <div class="row">
+          <input type="file" id="img-upload" class="ghost" style="padding:8px" />
+          <button class="ghost" id="save-draft">Save Draft</button>
+          <button class="btn" id="publish">Publish</button>
+        </div>
+        <div class="muted">Status: <span id="status">editing</span></div>
+      </div>
+    </div>
+  </template>
+
+ <script src="script.js"></script>
+</body>
+</html>
